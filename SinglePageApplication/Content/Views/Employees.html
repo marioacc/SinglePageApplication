@@ -1,0 +1,82 @@
+﻿<div ng-controller="employeeController">
+    <h2>Employees</h2>
+
+    <div class="modal fade" id="modal-dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Employee</h4>
+                </div>
+
+
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <form class="form-horizontal" name="form">
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-2 control-label">Id</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="id" readonly="readonly" ng-model="employee.Id" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" ng-model="employee.Name" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-2 control-label">Position</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="name" ng-model="employee.Position" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="id" class="col-sm-2 control-label">Department</label>
+                                    <div class="col-sm-10">
+                                        <select type="text" class="form-control" id="name" ng-model="employee.DepartmentId">
+                                            <option ng-repeat="dptm in departments" value={{dptm.Id}}>"{{dptm.Name}}"</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <button class="btn btn-primary" ng-click="saveEmployee()">Crear Employee</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <button class="btn btn-primary pull-right" ng-click="showDialog()">Add Employee</button>
+    </div>
+    <div class="row">
+        <table id="dpmts" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Department</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="empy in employees">
+                <tr>
+                    <td> <span>{{empy.Id}}</span></td>
+                    <td> <span>{{empy.Name}}</span></td>
+                    <td> <span>{{empy.Position}}</span></td>
+                    <td> <span>{{empy.Department.Name}}</span></td>
+                    <td>  <button class="btn btn-danger" ng-click="deleteEmployee(empy)">DELETE</button> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
